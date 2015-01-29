@@ -2,63 +2,80 @@
 
 <html>
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="bas.js"></script>
     <title>Application</title>
-    <script>
-    function validateForm()
-    {
-        var a=document.forms["mockupbas"]["fname"].value;
-        if (a == "" || a == null)
-        {
-            alert("You must enter a first name");
-            return false;
-        }
+
+   
+
+    <style>
+    .focus {
+    border: 2px solid #AA88FF;
+    background-color: #FFEEAA;
+            }
         
-        var b=document.forms["mockupbas"]["lname"].value;
-        if (b == "" || b == null)
-        {
-            alert("You must enter a last name");
-            return false;
-        }
-        
-        var c=document.forms["mockupbas"]["sid"].value;
-        if (c.length < 9 || c.length > 9)
-        {
-            alert("This is not a valid SID");
-            return false;
-        }
-        
-        var d=document.forms["mockupbas"]["email"].value;
-        var atpos = d.indexOf("@");
-        var dospos = d.lastIndexOf(".");
-        if (d != "" || d != null)
-        {
-           if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 > d.length)
-            {
-                alert("This is not a valid email");
-                return false;
-            } 
-        }
-        return true;
-    }
-</script>
+    </style>
+
 </head>
 
 <body>
-    <form name="mockupbas" action="success.html" onsubmit="return(validateForm());">
-    First Name: <input type="text" id="fname" name="fname">
 
+    <form name="mockupbas" action="success.html" onsubmit="return(validateForm());">
+
+       
+       <h3>Please select one:</h3>
+    <input type='radio' name='student' value='cs' id='cs' checked>I am a current student
+   <input type='radio' name='student' value='ns' id='ns'> New student 
+       
+
+   
+    <br>First Name: <input type="text" id="fname" name="fname">
     Last Name: <input type="text" id="lname" name="lname">
     
     <br>
     Email: <input type="text" id="email" name="email">
     Student ID: <input type="text" id="sid" name="sid">
         
-    <h3>Which degree are you interested in?</h3>
-    <br><input type="radio" id="sd" name="sd" value="Software Development"> Software Development</input>
-    <br><input type="radio" id="ns" name="ns" value="Network Security">Network Administration & Security</input>
-    <br><input type="radio" id="un" name="un" value="Undecided">Undecided</input>
-    <br><input type="submit" value="Submit">
+    
+    
+    
+    <h3>I am a (please check all that apply):</h3>
+    <input type="checkbox" id="veteran" name="veteran" value="veteran"> Veteran </input>
+    <br><input type="checkbox" id="is" name="is" value="is"> International Student </input>
+
+    <br><input type="checkbox" id="rs" name="rs" value="rs"> Running Start Student </input>   
+        <br><input type="submit" value="Submit">
+
     </form>
+
+
+
+
+
+
+
+
+<script>
+$('input[type="text"]').focus(function() {
+    $(this).addClass("focus");
+});
+ 
+$('input[type="text"]').blur(function() {
+    $(this).removeClass("focus");
+});
+
+$("#ns").click(function(){
+    $("#sid").hide();
+});
+
+$("#cs").click(function(){
+    $("#sid").show();
+});
+
+</script>
+
+
+
 </body>
 
 
