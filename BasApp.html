@@ -56,6 +56,9 @@
 
 
 <script>
+
+var newStudent;
+
 $('input[type="text"]').focus(function() {
     $(this).addClass("focus");
 });
@@ -66,10 +69,12 @@ $('input[type="text"]').blur(function() {
 
 $("#ns").click(function(){
     $("#sid").hide();
+    newStudent = true;
 });
 
 $("#cs").click(function(){
     $("#sid").show();
+    newStudent = false;
 });
 
 </script>

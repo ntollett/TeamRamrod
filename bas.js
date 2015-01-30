@@ -20,7 +20,7 @@
         
         var c=document.forms["mockupbas"]["sid"].value;
     
-      if(c.length < 9 || c.length > 9)
+      if(c.length != 9 && newStudent == false)
         {
             alert("This is not a valid SID");
             return false;
